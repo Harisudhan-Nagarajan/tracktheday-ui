@@ -12,7 +12,18 @@ export const allRoutes = [
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    // element: <Dashboard />,
+    children: [
+      {
+        path: "about",
+        element: <Dashboard />,
+      },
+      {
+        index: true,
+        path: "*",
+        element: <About />,
+      },
+    ],
     id: "dashboard-page",
     routeType: "private",
   },

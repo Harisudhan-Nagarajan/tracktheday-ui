@@ -1,24 +1,22 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  BrowserRouter,
-} from "react-router";
-import { allRoutes } from "./routes/routesconfig";
-import { ProtectedRoute } from "./routes/ProtectedRoute";
+// import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router";
 import { useEffect } from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
+
 // App component
 function App() {
-  // const router = createBrowserRouter(allRoutes);
-  useEffect(()=>{
-    console.log('App')
-  },[])
-  return (
-    // <RouterProvider router={router}>
-    <BrowserRouter>
-      <ProtectedRoute />
-    </BrowserRouter>
+  useEffect(() => {
+    console.log("App mounted");
+  }, []);
 
-    // </RouterProvider>
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <ProtectedRoute /> {/* Ensure this contains <Routes> inside */}
+      </BrowserRouter>
+    </Provider>
   );
 }
 
